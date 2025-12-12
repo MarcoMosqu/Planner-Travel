@@ -26,6 +26,18 @@ Prepare the project for the next development phase by improving its structure, c
    - Enhance recursive methods in interfaces for robustness.
 
    - Ensure a clear and enforceable contract through abstract classes or interfaces.
+   
+
+* GUI Driiven 
+
+   - Review and improve the existing GUI components and flows.
+
+   - Ensure that all necessary GUI-driven methods are implemented and integrated.
+
+   - Focus on making the interface user-friendly, responsive, and consistent with the project’s narrative.
+
+   - Maintain clear separation between GUI logic and core model logic for easier future maintenance.
+
 
 * Documentation
 
