@@ -5,10 +5,15 @@ public class CountryAdvisor {
     private String country;
     private double exchangeRate;
 
-    // --- Constructor ---
+    // polymorphic destination object
+    private TravelDestination destination;
+
+    public TravelDestination getDestination() {
+        return destination;
+    }
+
     public CountryAdvisor() { }
 
-    // --- Determine or confirm the country ---
     public void determineCountry(Scanner in, UserProfile user) {
         System.out.print("Do you already know which country you will visit? (yes/no): ");
         String knowsCountry = in.nextLine().trim().toLowerCase();
@@ -18,6 +23,12 @@ public class CountryAdvisor {
         } else {
             suggestCountry(user);
         }
+
+        // Assign matching subclass
+        if (country.equalsIgnoreCase("Argentina")) destination = new ArgentinaDestination();
+        if (country.equalsIgnoreCase("Colombia")) destination = new ColombiaDestination();
+        if (country.equalsIgnoreCase("Peru"))      destination = new PeruDestination();
+        if (country.equalsIgnoreCase("Brazil"))    destination = new BrazilDestination();
     }
 
     // --- If user already knows the country ---
