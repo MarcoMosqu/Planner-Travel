@@ -1,5 +1,5 @@
 //////////////////////////////////////
-// Class 4: Main
+// Class : Main
 //////////////////////////////////////
 import java.util.Scanner;
 
@@ -21,3 +21,4 @@ public class Main {
         in.close();
     }
 }
+
