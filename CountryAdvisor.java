@@ -1,3 +1,6 @@
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceDialog;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,26 +16,71 @@ public class CountryAdvisor {
     }
 
     public CountryAdvisor() { }
+    /**
+      * Determines the travel country using a simple GUI flow.
+      * Uses JavaFX dialogs for user-friendly interaction.
+    */
 
-    public void determineCountry(Scanner in, UserProfile user) {
-        System.out.print("Do you already know which country you will visit? (yes/no): ");
-        String knowsCountry = in.nextLine().trim().toLowerCase();
+    public void determineCountry(UserProfile user) {
 
-        if (knowsCountry.equals("yes")) {
-            chooseExistingCountry(in);
-        } else {
-            suggestCountry(user);
-        }
+    // Step 1 — Ask with YES/NO JavaFX alert
+    Alert ask = new Alert(Alert.AlertType.CONFIRMATION,
+            "Do you already know which country you will visit?",
+            ButtonType.YES, ButtonType.NO);
+    ask.setHeaderText(null);
 
-        // Assign matching subclass
-        if (country.equalsIgnoreCase("Argentina")) destination = new ArgentinaDestination();
-        if (country.equalsIgnoreCase("Colombia")) destination = new ColombiaDestination();
-        if (country.equalsIgnoreCase("Peru"))      destination = new PeruDestination();
-        if (country.equalsIgnoreCase("Brazil"))    destination = new BrazilDestination();
+    // Shows the YES/NO dialog and waits for the user's choice.
+    // If the user closes the window, it defaults to NO.
+    ButtonType result = ask.showAndWait().orElse(ButtonType.NO);
+
+    // Step 2 — If they already know → let them pick from a list
+    if (result == ButtonType.YES) {
+
+        ChoiceDialog<String> dialog = new ChoiceDialog<>(
+                "Argentina",
+                "Argentina", "Colombia", "Peru", "Brazil"
+        );
+        dialog.setTitle("Choose Country");
+        dialog.setHeaderText("Select your travel destination:");
+        dialog.setContentText("Country:");
+        // Shows the dropdown and returns the selected country.
+        // Defaults to "Argentina" if no selection is made.
+        String selected = dialog.showAndWait().orElse("Argentina");
+        // Applies the chosen country and sets its exchange rate.
+        setCountryAndRate(selected);
+        return;  // skip automatic suggestion
+        
     }
 
+    // Step 3 — Otherwise → automatically suggest based on userProfile
+    suggestCountry(user);
+    assignDestination(); // assign the matching TravelDestination subclass
+   }
+   private void setCountryAndRate(String input) {
+    if (input.equalsIgnoreCase("Argentina")) {
+        country = "Argentina";
+        exchangeRate = 950.0;
+    } else if (input.equalsIgnoreCase("Colombia")) {
+        country = "Colombia";
+        exchangeRate = 4000.0;
+    } else if (input.equalsIgnoreCase("Peru")) {
+        country = "Peru";
+        exchangeRate = 3.8;
+    } else if (input.equalsIgnoreCase("Brazil")) {
+        country = "Brazil";
+        exchangeRate = 5.4;
+    }
+   
+  }
+   private void assignDestination() {
+    if ("Argentina".equalsIgnoreCase(country)) destination = new ArgentinaDestination();
+    else if ("Colombia".equalsIgnoreCase(country)) destination = new ColombiaDestination();
+    else if ("Peru".equalsIgnoreCase(country)) destination = new PeruDestination();
+    else if ("Brazil".equalsIgnoreCase(country)) destination = new BrazilDestination();
+ }
+ 
     // --- If user already knows the country ---
-    private void chooseExistingCountry(Scanner in) {
+     /* private void chooseExistingCountry(Scanner in) {
         while (true) {
             System.out.print("What country will you be visiting? (Argentina, Colombia, Peru, Brazil): ");
             String input = in.nextLine().trim();
@@ -57,7 +105,7 @@ public class CountryAdvisor {
                 System.out.println("Please choose a valid country from the list.");
             }
         }
-    }
+    } */
 
     // --- If user doesn’t know, suggest one ---
     private void suggestCountry(UserProfile user) {
@@ -187,4 +235,3 @@ public class CountryAdvisor {
     public String getCountry() { return country; }
     public double getExchangeRate() { return exchangeRate; }
 }
-
