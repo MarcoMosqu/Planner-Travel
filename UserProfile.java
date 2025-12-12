@@ -47,9 +47,33 @@ public class UserProfile {
     }
 
     // --- Getters ---
-    public String getName() { return name; }
-    public double getBudget() { return budget; }
-    public String getFavoriteFood() { return favoriteFood; }
-    public String getRoomType() { return roomType; }
-    public List<String> getActivities() { return activities; }
+    public String getName() {
+        return name;
+    }
+
+    public double getBudget() {
+        return budget;
+    }
+
+    public String getFavoriteFood() {
+        return favoriteFood;
+    }
+
+    public String getRoomType() {
+        return roomType;
+    }
+
+    public List<String> getActivities() {
+        return activities;
+    }
+
+    // --- Recursive method #2: count total characters in all activities ---
+    public int countActivityCharacters() {
+        return countCharactersRecursive(0);
+    }
+
+    private int countCharactersRecursive(int index) {
+        if (index >= activities.size()) return 0; // base case
+        return activities.get(index).length() + countCharactersRecursive(index + 1);
+    }
 }
