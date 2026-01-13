@@ -31,6 +31,7 @@
 
 - [Usage](#usage)
   1 Run the program.
+  
   2 Follow the on-screen prompts.
     The program will ask for:
     Your name
@@ -39,19 +40,25 @@
     Favorite food
     Room type (individual or group)
     Whether you already know the country you want to visit
+    
   3 Get suggestions.
     If you don’t know which country to visit, the program will analyze your answers and suggest one for you. 
+    
   4 Receive your trip summary.
     The program prints:
-        A personalized introduction
-        Your converted budget and discount
-        Suggested weekly plan
-        A motivational closing message 
+        * A personalized introduction
+        * Your converted budget and discount
+        * Suggested weekly plan
+        * A motivational closing message
   
-[Dependencies](#dependencies)
+- [Dependencies](#dependencies). 
+
 * You need to have Java (JDK 8 or later) installed on your computer.
+
 * The program uses the Scanner class from java.util, which is already included in Java.
+
 * No other libraries or tools are required.
+
 * It works on Windows, macOS, and Linux.
 
 - [Next Step](#Next Step).
@@ -62,7 +69,7 @@
     * Smarter Recommendations: Improve the program’s accuracy and sensitivity to better match destinations with the traveler’s interests and answers.
     * Create a special experience around the favorite food.
     * Expanded Destinations: Include more South American countries to offer wider travel possibilities.
-    Data Storage: Allow users to save or export their trip summaries for future reference.
+    * Data Storage: Allow users to save or export their trip summaries for future reference.
 
 - [License](#license)
 
@@ -87,4 +94,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
 
