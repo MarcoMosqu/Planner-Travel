@@ -23,8 +23,8 @@
  A code editor (e.g., VS Code) or an online Java compiler.
 
 * Open your code editor or online compiler.
-* copy and paste the code into the editor.
-* installs the java package, included in this folder
+* Copy and paste the code into the editor.
+* Installs the java package, included in this folder
 * Run / Execute the program.
 * Enter the information the program asks for step by step.
 * The program will print a summary.
@@ -87,3 +87,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
